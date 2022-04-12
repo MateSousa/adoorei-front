@@ -1,7 +1,5 @@
 <template>
-    <div class="product-details flex flex-col justify-center items-center">
-
-        
+    <div class="product-details flex flex-col justify-center items-center">      
 
         <ProductCover class="w-56" />
 
@@ -51,8 +49,6 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-
-
 .button-cart, .checkout {
     width: 450px;
     height: 3rem;
@@ -105,6 +101,8 @@ export default Vue.extend({
     .button-cart:hover, .checkout:hover {
         background-color: #fd7e14;
     }
+
+    
 
 }
 

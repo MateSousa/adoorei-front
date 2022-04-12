@@ -1,6 +1,6 @@
 <template>
-    <div class="product-details-template">        
-        <h1 class="text-2xl" >{{ $product.title }}</h1>
+    <div class="product-details-template flex flex-col items-center">        
+        <h1 class="text-2xl self-start" >{{ $product.title }}</h1>
         <ProductDetails />
     </div>
 </template>
@@ -21,5 +21,9 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+
+.product-details-template  {
+    width: 100%;
+}
 
 </style>
