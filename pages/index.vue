@@ -1,11 +1,15 @@
 <template>
-  <Tutorial />
+  <HomeTemplate/>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { products } from '@/store'
 
 export default Vue.extend({
-  name: 'IndexPage',
+  layout: 'adoorei',
+  async asyncData() {
+    return await products.index()
+  },
 })
 </script>

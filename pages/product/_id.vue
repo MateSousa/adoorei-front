@@ -7,6 +7,7 @@ import Vue from 'vue'
 import { products } from '@/store'
 
 export default Vue.extend({
+    layout: 'adoorei',
     async asyncData({ params }) {
         await products.show({ id: params.id as any })
     }
