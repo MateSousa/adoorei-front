@@ -1,7 +1,9 @@
 import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
 import { $axios } from '@/utils/nuxt-instance'
 
-
+interface Show {
+  category: string
+}
 
 @Module({ namespaced: true, name: 'categories', stateFactory: true })
 export default class Categories extends VuexModule { 
@@ -29,13 +31,13 @@ export default class Categories extends VuexModule {
 
     @Action({ rawError: true })
     public async index() {
-        const categories = await $axios.$get('/product/categories/')
+        const categories = await $axios.$get('/products/category/')
         this.context.commit('SET_CATEGORIES', categories)
     }
 
     @Action({ rawError: true })
     public async show(category: string) {
-        const singleCategory = await $axios.$get(`/product/categories/${category}`)
+        const singleCategory = await $axios.$get(`/products/category/${category}`)
         this.context.commit('SET_CATEGORY', singleCategory)
     }   
 
