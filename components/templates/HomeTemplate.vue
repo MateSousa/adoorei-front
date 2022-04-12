@@ -19,9 +19,11 @@ import { products } from '@/store'
 
 <style scoped>
 
-.home-template {
-    width: 100%;
-    grid-template-columns: repeat(4, 300px);
+@media (min-width: 481px) {
+    .home-template {
+        grid-template-columns: repeat(4, 300px);
+    }
+
 }
 
 </style>
