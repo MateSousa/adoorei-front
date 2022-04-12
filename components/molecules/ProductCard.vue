@@ -3,7 +3,7 @@
         <div
         class="product-card flex flex-col justify-center items-center gap-10">
             <div class="product-img">
-                <img class="w-20 h-20" :src="product.image" :alt="`Image of ${product.title}`">
+                <img :src="product.image" :alt="`Image of ${product.title}`">
             </div>
             <div class="product-info">
                 <h3 class="text-base sm:text-sm font-bold p-2.5">
@@ -46,10 +46,20 @@ export default Vue.extend({
     transform: translateY(-5px);
 }
 
+img {
+    width: 70px;
+    height: 65px;
+}
+
 @media (min-width: 481px) {
     .product-card {
         width: 260px;
         height: 270px;
+    }
+
+    img { 
+        width: 100px;
+        height: 95px;
     }
 }
 
