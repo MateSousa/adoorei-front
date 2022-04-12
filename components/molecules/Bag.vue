@@ -1,6 +1,6 @@
 <template>
-    <div class="bag flex align-center justify-center">
-        <div class="img">
+    <div class="bag flex justify-center">
+        <div class="img ">
             <FontAwesomeIcon :icon="['fas', 'cart-shopping']" />
         </div>
         <div class="count">
@@ -23,10 +23,6 @@
 
 <style scoped>
 
-    .img {
-        position: relative;
-        z-index: -1;
-    }
 
     svg {
         width: 25px;
