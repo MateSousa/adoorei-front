@@ -2,7 +2,9 @@ import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
 import { $axios } from '@/utils/nuxt-instance'
 import { Product } from  '@/models'
 
-
+interface Show {
+  id: Product['id']
+}
 
 @Module({ namespaced: true, name: 'products', stateFactory: true })
 export default class Products extends VuexModule { 
@@ -35,7 +37,7 @@ export default class Products extends VuexModule {
     }
 
     @Action({ rawError: true })
-    public async show(id: number) {
+    public async show({ id }: Show) {
         const product = await $axios.$get(`/products/${id}`)
         this.context.commit('SET_PRODUCT', product)
     }
