@@ -28,7 +28,7 @@ export default class Categories extends VuexModule {
     @Mutation
     SET_CATEGORY(category: Product[]) {
         this.category = category
-    }
+    }    
 
     @Action({ rawError: true })
     public async index() {
@@ -40,6 +40,53 @@ export default class Categories extends VuexModule {
     public async show(category: string) {
         const singleCategory = await $axios.$get(`/products/category/${category}`)
         this.context.commit('SET_CATEGORY', singleCategory)
-    }   
+    }       
+
+    @Action({ rawError: true })
+    public async sortByTitle(category: string) { 
+        const products = await $axios.$get(`/products/category/${category}`)
+        const sorted = products.sort((a, b) => {
+            if (a.title < b.title) {
+                return -1
+            }
+            if (a.title > b.title) {
+                return 1
+            }
+            return 0
+        })
+        this.context.commit('SET_CATEGORY', sorted)
+    }
+
+    @Action({ rawError: true })
+    public async sortByPrice(category: string) {
+        const products = await $axios.$get(`/products/category/${category}`)
+        const sorted = products.sort((a, b) => {
+            if (a.price < b.price) {
+                return -1
+            }
+            if (a.price > b.price) {
+                return 1
+            }
+            return 0
+        })
+        this.context.commit('SET_CATEGORY', sorted)
+    }
+
+    @Action({ rawError: true })
+    public async sortByRating(category: string) {
+        const products = await $axios.$get(`/products/category/${category}`)
+        const sorted = products.sort((a, b) => {
+            if (a.rating.count > b.rating.count) {
+                return -1
+            }
+            if (a.rating.count < b.rating.count) {
+                return 1
+            }
+            return 0
+        })
+        this.context.commit('SET_CATEGORY', sorted)
+    }
+    
+
 
 }
