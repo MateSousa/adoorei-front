@@ -13,5 +13,17 @@ export default Vue.extend({
     await categories.index()
     
   },
+  head() {
+    return {
+      title: 'Adoorei | Home',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'A simple list of products'
+        }
+      ]
+    }
+  }
 })
 </script>
