@@ -1,7 +1,7 @@
 <template>
     <div class="adoorei-layout">
         <Header />
-        <main class="main mt-10">
+        <main class="main mt-32">
             <Container>
                 <Nuxt/>
             </Container>
