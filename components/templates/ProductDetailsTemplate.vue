@@ -14,9 +14,7 @@ export default Vue.extend({
         $product() {
             return products.$single
         }
-    },
-
-        
+    },        
 })
 </script>
 

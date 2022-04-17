@@ -25,5 +25,4 @@ import { products } from '@/store'
     }
 
 }
-
 </style>
