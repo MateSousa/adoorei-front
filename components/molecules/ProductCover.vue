@@ -1,17 +1,17 @@
 <template>
     <div class="product-img">
-        <img :src="$product.image" :alt="`Image of ${$product.title}`" />
+        <img :src="product.image" :alt="`Image of ${product.title}`" />
     </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import { products } from '@/store'
 
 export default Vue.extend({
-    computed: {
-        $product() {
-            return products.$single
+    props: {
+        product: {
+            type: Object,
+            required: true
         }
     }
 })
