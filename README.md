@@ -26,7 +26,8 @@ $ yarn generate // npm run generate
 ## Functions
 
 # Home
-    - You can see all products, choose a one by click on it and see more details about it  or you can search for a product by typing in the search bar.
+    - You can see all products, choose a one by click on it and see more details 
+        about it or you can search for a product by typing in the search bar.
 # Product
     - You can see more details about the product, add it to cart and see the cart.
 # Categories
