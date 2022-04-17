@@ -1,23 +1,19 @@
 <template>
     <div class="product-details flex flex-col justify-center items-center">      
 
-        <ProductCover class="w-56" />
+        <ProductCover class="w-56" :product="$product" />
 
-        <ProductInfo class="flex flex-col mt-5 gap-5" />
+        <ProductInfo class="flex flex-col mt-5 gap-5" :product="$product" />
 
-        <div class="product-qnt flex justify-between items-center text-xl mt-5">
-            <span @click="qnt--" class="decrease">-</span>
-            <span class="quantity" >{{ qnt }}</span>
-            <span @click="qnt++" class="increase">+</span>
-        </div>
+        <ProductQuantity :quantity="quantity" @decrease="decrease"  @increase="increase"  />
 
         <div class="button-add-to-cart mt-5">
-            <Button text="Add to  cart" @click="addToCart" class="button-cart"/>
+            <Button text="Add to  cart" @click="addToCart($product.id, quantity)" class="button-cart"/>
         </div>
 
         <div class="button-to-checkout mt-5">
-            <NuxtLink to="/checkout">
-                <Button text="Go to checkout" class="checkout" />
+            <NuxtLink to="/cart">
+                <Button text="Go to cart" class="cart" />
             </NuxtLink>
         </div>
         
@@ -26,14 +22,14 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { products } from '@/store'
+import { products, carts } from '@/store'
 
 export default Vue.extend({
     data() {
         return {
-            qnt: 1
+            quantity: 1
         }
-    },
+    },    
     computed: {
         $product() {
             return products.$single
@@ -41,7 +37,21 @@ export default Vue.extend({
     },
     methods: {
         addToCart() {
-            console.log(this.$product.id)
+            carts.addProduct({
+                id: this.$product.id,
+                productQuantity: this.quantity,
+                price: this.$product.price,
+                title: this.$product.title,
+                image: this.$product.image
+            })
+        },
+        increase() {
+            this.quantity++
+        },
+        decrease() {
+            if (this.quantity > 1) {
+                this.quantity--
+            }
         }
     },
         
@@ -49,7 +59,7 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.button-cart, .checkout {
+.button-cart, .cart {
     width: 450px;
     height: 3rem;
     border-radius: .75rem;
@@ -67,7 +77,7 @@ export default Vue.extend({
     color: #fff;
 }
 
-.checkout {
+.cart {
     background-color: #808080;
     color: #fff;
 }
