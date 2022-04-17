@@ -51,18 +51,12 @@ import { categories } from '@/store'
 </script>
 
 <style scoped>
-
 .product-category-template {
     display: grid;
     grid-template-columns: auto;
     gap: 20px;
-
 }
-
 .product-filter { grid-area: 1 / 1 / 2 / 3; }
-
 .product-card { grid-area: 2 / 1 / 3 / 3; }
-
-
 
 </style>
