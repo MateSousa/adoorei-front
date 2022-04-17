@@ -12,21 +12,21 @@ export default class Categories extends VuexModule {
     private categories: string = ''
     private category = {} as  Product[]
     
-    get $all() {
+    public get $all() {
         return this.categories
     }
 
-    get $single() {
+    public get $single() {
         return this.category
     }
 
     @Mutation
-    SET_CATEGORIES(categories: string) {
+    private SET_CATEGORIES(categories: string) {
         this.categories = categories
     }
 
     @Mutation
-    SET_CATEGORY(category: Product[]) {
+    private SET_CATEGORY(category: Product[]) {
         this.category = category
     }    
 

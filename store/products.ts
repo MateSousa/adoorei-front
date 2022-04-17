@@ -12,22 +12,27 @@ export default class Products extends VuexModule {
     private products = {} as  Product[]
     private product = {} as Product
     
-    get $all() {
+    public get $all() {
         return this.products
     }
 
-    get $single() {
+    public get $single() {
         return this.product
     }
 
     @Mutation
-    SET_PRODUCTS(products: Product[]) {
+    private SET_PRODUCTS(products: Product[]) {
         this.products = products
     }
 
     @Mutation
-    SET_PRODUCT(product: Product) {
+    private SET_PRODUCT(product: Product) {
         this.product = product
+    }
+
+    @Mutation
+    private SET_FILTERED_PRODUCTS(products: Product[]) {
+        this.products = products
     }
 
     @Action({ rawError: true })
@@ -40,6 +45,13 @@ export default class Products extends VuexModule {
     public async show({ id }: Show) {
         const product = await $axios.$get(`/products/${id}`)
         this.context.commit('SET_PRODUCT', product)
+    }
+
+    @Action({ rawError: true })
+    public async filter(title : string) {
+        const products = await $axios.$get(`/products`)
+        const sorted = products.filter(product => product.title.toLowerCase().includes(title.toLowerCase()))
+        this.context.commit('SET_FILTERED_PRODUCTS', sorted)
     }
 
 }
