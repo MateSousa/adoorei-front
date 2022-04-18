@@ -20,4 +20,9 @@
 
 <style scoped>
 
+.footer {
+    padding: 1rem;
+    text-align: center;
+}
+
 </style>
