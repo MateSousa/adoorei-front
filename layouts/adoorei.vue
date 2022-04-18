@@ -21,8 +21,12 @@
 <style scoped>
 
 .footer {
-    padding: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
     text-align: center;
+    padding: 1rem;
+    
 }
 
 </style>
